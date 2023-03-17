@@ -1,0 +1,3 @@
+add words to "words.txt" and "wordsOrigin.txt"
+run index.js; if program crush, copy console.log and paste to "s file", remove words that added, and rerun program.
+run "whichWordMissed.js" and paste console output to words. and rerun index.js

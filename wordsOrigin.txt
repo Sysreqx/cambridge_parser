@@ -447,7 +447,6 @@ town
 road
 drive
 arm
-ИСТИНА
 federal
 break
 difference
@@ -2235,7 +2234,6 @@ wooden
 elementary
 concert
 aggressive
-ЛОЖЬ
 intention
 channel
 extreme

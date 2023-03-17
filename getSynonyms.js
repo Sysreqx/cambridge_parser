@@ -3,9 +3,6 @@ const cheerio = require("cheerio");
 
 // READ ARRAY FROM FILE
 const {readFileSync} = require('fs');
-const fs = require("fs");
-
-let file = fs.createWriteStream('wordsWithDefinition.txt');
 
 let filename = "words.txt";
 
@@ -16,46 +13,45 @@ function syncReadFile(filename) {
 }
 
 let arr = syncReadFile(filename);
-// let outputSet = [];
 
 
 // RETURNS A PROMISE THAT RESOLVES AFTER "MS" MILLISECONDS
 const timer = ms => new Promise(res => setTimeout(res, ms))
 
-
 async function load() { // WE NEED TO WRAP THE LOOP INTO AN ASYNC FUNCTION FOR THIS TO WORK
     for (let i = 0; i < arr.length; i++) {
 
+        let synonyms = "";
+        let definitions = "";
         try {
-            axios.get(`https://dictionary.cambridge.org/dictionary/english/${arr[i]}`).then(html => {
+            axios.get(`https://www.thesaurus.com/browse/${arr[i]}`).then(html => {
                 const $ = cheerio.load(html.data);
-                let text = ""
-                $("div.ddef_h > div").each((i, el) => {
-                    text += `${$(el).text()}\n`;
+                $("#meanings > div.css-ixatld.e15rdun50 > ul > li > a").each((i, el) => {
+                    synonyms += `${$(el).text()}; `;
                 })
-                console.log(i + ".\t" + arr[i] + ` --definition-- ` + text.substring(0, text.indexOf('\n')));
-                file.write(arr[i] + ` --definition-- ` + text.substring(0, text.indexOf('\n')) + "\n");
+                // 3 synonyms
+                let index = synonyms.indexOf(";");
+                index = synonyms.indexOf(";", index + 1);
+                index = synonyms.indexOf(";", index + 1);
+                // 3 synonyms
+
+                console.log(arr[i] + ` --synonyms-- ` + synonyms.substring(0, index) + ";");
             }).catch(function(e) {
 
-                console.log(i + ".\t" + arr[i] + ' Not fired due to the catch');
-                file.write(arr[i] + ' Not fired due to the catch\n');
-
+                console.log('Not fired due to the catch');
             }).then(function(){
                 i++;
             }, function () {
-                console.log(i + ".\t" + arr[i] + ' Not fired due to the catch');
-                file.write(arr[i] + ' Not fired due to the catch\n');
+
+                console.log('Not fired due to the catch');
             });
         } catch (error) {
             continue;
         }
 
+
         await timer(10); // THEN THE CREATED PROMISE CAN BE AWAITED
     }
-
 }
 
 load().then();
-
-
-

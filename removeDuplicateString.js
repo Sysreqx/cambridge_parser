@@ -1,9 +1,9 @@
 // READ ARRAY FROM FILE
 const {readFileSync} = require('fs');
 
-let filename = "wordsOrigin.txt";
+let filename = "tmpStorage.txt";
 // let filename = "wordsOrigin.txt";
-// let filename = "s";
+// let filename = "tmpStorage.txt";
 function syncReadFile(filename) {
     const contents = readFileSync(filename, 'utf-8');
 
@@ -12,9 +12,12 @@ function syncReadFile(filename) {
 
 let arr = syncReadFile(filename);
 
+for (let i = 0; i < arr.length; i++) {
+    arr[i] = arr[i].toLowerCase();
+}
+
 const set = new Set(arr);
 
 set.forEach(s => {
     console.log(s);
 })
-
