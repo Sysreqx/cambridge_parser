@@ -1,11 +1,6 @@
-const axios = require("axios");
-const cheerio = require("cheerio");
-
 // READ ARRAY FROM FILE
 const {readFileSync} = require('fs');
 const fs = require("fs");
-
-let filename1 = "wordsCollected.txt";
 
 let fileA = fs.createWriteStream("A.txt");
 let fileB = fs.createWriteStream("B.txt");
@@ -33,6 +28,8 @@ let fileW = fs.createWriteStream("W.txt");
 let fileX = fs.createWriteStream("X.txt");
 let fileY = fs.createWriteStream("Y.txt");
 let fileZ = fs.createWriteStream("Z.txt");
+
+let filename1 = "wordsCollected.txt";
 
 function syncReadFile(filename) {
     const contents = readFileSync(filename, 'utf-8');
