@@ -46,13 +46,12 @@ async function load() { // WE NEED TO WRAP THE LOOP INTO AN ASYNC FUNCTION FOR T
 
                 console.log(cnt + ". " + arr[i] + ` --definitions-- ` + definitions.substring(0, index) + ";");
 
-                // console.log(arr[i] + ` --definitions-- ` + definitions.substring(0, index) + ";");
                 fileWordsWithDefinitions.write(arr[i] + ` --definitions-- ` + definitions.substring(0, index) + ";\n");
 
                 cnt++;
             }).catch(function(e) {
 
-                // console.log('Not fired due to the catch ' + arr[i]);
+                console.log(cnt + ". " + arr[i] + ` --definitions-- NO DEFINITION` + ";");
                 fileWordsWithDefinitions.write(arr[i] + ` --definitions-- NO DEFINITION` + ";\n");
                 cnt++;
             }).then(function(){

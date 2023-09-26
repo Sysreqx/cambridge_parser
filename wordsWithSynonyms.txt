@@ -1,0 +1,17 @@
+signing --synonyms-- lettering; blazing; branding;
+louse --synonyms-- cad; cootie; knave;
+granted --synonyms-- acknowledged; assumed; admitted;
+reseptive --synonyms-- NO SYNONYMS;
+merely --synonyms-- hardly; only; purely;
+latter --synonyms-- recent; closing; final;
+corrupt --synonyms-- crooked; fraudulent; nefarious;
+neutral --synonyms-- disinterested; evenhanded; fair-minded;
+commercial --synonyms-- economic; financial; monetary;
+would --synonyms-- authorize; decree; resolve;
+settled --synonyms-- ended; established; resolved;
+becoming --synonyms-- enhancing; fair; welcome;
+pine --synonyms-- ache; crave; grieve;
+disgusting --synonyms-- abominable; awful; creepy;
+proper --synonyms-- appropriate; convenient; decent;
+score --synonyms-- account; amount; average;
+ --synonyms-- ;
