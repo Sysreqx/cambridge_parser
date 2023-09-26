@@ -14,3 +14,4 @@ manual --definition-- done with the hands:
 middle-class --definition-- a social group that consists of well-educated people, such as doctors, lawyers, and teachers, who have good jobs and are not poor, but are not very rich: 
 apology --definition-- an act of saying that you are sorry for something wrong you have done: 
 kneel --definition-- to go down into, or stay in, a position where one or both knees are on the ground: 
+

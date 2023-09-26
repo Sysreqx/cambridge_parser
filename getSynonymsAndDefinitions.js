@@ -4,7 +4,7 @@ const cheerio = require("cheerio");
 // READ ARRAY FROM FILE
 const {readFileSync} = require('fs');
 
-let filename = "words.txt";
+let filename = "wordsOnly.txt";
 
 function syncReadFile(filename) {
     const contents = readFileSync(filename, 'utf-8');
@@ -26,7 +26,7 @@ async function load() { // WE NEED TO WRAP THE LOOP INTO AN ASYNC FUNCTION FOR T
         try {
             axios.get(`https://www.thesaurus.com/browse/${arr[i]}`).then(html => {
                 const $ = cheerio.load(html.data);
-                $("#meanings > div.css-ixatld.e15rdun50 > ul > li > a").each((i, el) => {
+                $(".q7ELwPUtygkuxUXXOE9t > ul > li > a").each((i, el) => {
                     synonyms += `${$(el).text()}; `;
                 })
                 // 3 synonyms
@@ -50,7 +50,7 @@ async function load() { // WE NEED TO WRAP THE LOOP INTO AN ASYNC FUNCTION FOR T
             axios.get(`https://dictionary.cambridge.org/dictionary/english/${arr[i]}`).then(html => {
                 const $ = cheerio.load(html.data);
 
-                $("div.ddef_h > div").each((i, el) => {
+                $(".ddef_h > .ddef_d").each((i, el) => {
                     definitions += `${$(el).text()}\n`;
                 })
                 // console.log(arr[i] + ` --definition-- ` + definitions.substring(0, definitions.indexOf('\n')));

@@ -13,4 +13,4 @@ let arr = syncReadFile('tmpStorage.txt');
 
 for (let i = 0; i < arr.length; i++) {
     console.log("\"" + arr[i] + "\"");
-}
+}   
