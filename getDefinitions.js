@@ -14,6 +14,12 @@ function syncReadFile(filename) {
 
 let arr = syncReadFile(filename);
 
+// write to file
+let fs = require('fs');
+
+let fileWordsWithDefinitions = fs.createWriteStream('wordsWithDefinitions.txt');
+
+let cnt = 1;
 
 // RETURNS A PROMISE THAT RESOLVES AFTER "MS" MILLISECONDS
 const timer = ms => new Promise(res => setTimeout(res, ms))
@@ -31,16 +37,24 @@ async function load() { // WE NEED TO WRAP THE LOOP INTO AN ASYNC FUNCTION FOR T
                 $("._bzA3f8_vqmJSIKsgOar > ol > li > .ESah86zaufmd2_YPdZtq").each((i, el) => {
                     definitions += `${$(el).text()}; `;
                 })
+
                 // 3 definitions
                 let index = definitions.indexOf(";");
                 index = definitions.indexOf(";", index + 1);
                 index = definitions.indexOf(";", index + 1);
                 // 3 definitions
 
-                console.log(arr[i] + ` --definitions-- ` + definitions.substring(0, index) + ";");
+                console.log(cnt + ". " + arr[i] + ` --definitions-- ` + definitions.substring(0, index) + ";");
+
+                // console.log(arr[i] + ` --definitions-- ` + definitions.substring(0, index) + ";");
+                fileWordsWithDefinitions.write(arr[i] + ` --definitions-- ` + definitions.substring(0, index) + ";\n");
+
+                cnt++;
             }).catch(function(e) {
 
-                console.log('Not fired due to the catch');
+                // console.log('Not fired due to the catch ' + arr[i]);
+                fileWordsWithDefinitions.write(arr[i] + ` --definitions-- NO DEFINITION` + ";\n");
+                cnt++;
             }).then(function(){
                 i++;
             }, function () {

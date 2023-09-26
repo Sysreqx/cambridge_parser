@@ -35,11 +35,31 @@ function getOnlyTranslation(arr) {
     }
 }
 
-getWordsOnly(arr);
-getOnlyTranslation(arr);
+function getWords(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].charAt(0).match(/^[a-zA-Z]*$/)) {
+            wordsOnly.push(arr[i]);
+            wordsTranslation.push(arr[i + 1]);
+            wordsWithTranslation.push(`${arr[i]} - %%%${arr[i + 1]}`);
+        }
+    }
+}
 
-wordsOnly.forEach((e) => console.log(e));
-console.log("/////////");
-console.log("/////////");
-console.log("/////////");
-wordsTranslation.forEach((e) => console.log(e));
+getWords(arr);
+
+// wordsWithTranslation.forEach((e) => console.log(e));
+
+// write to file
+let fs = require('fs');
+
+let fileWordsWithTranslation = fs.createWriteStream('wordsWithTranslation.txt');
+fileWordsWithTranslation.on('error', function(err) {
+    console.log("createWriteStream error occurred (fileWordsWithTranslation.txt)") });
+wordsWithTranslation.forEach((e) => fileWordsWithTranslation.write(`${e}\n`));
+fileWordsWithTranslation.end();
+
+let fileWordsOnly = fs.createWriteStream('wordsOnly.txt');
+fileWordsOnly.on('error', function(err) {
+    console.log("createWriteStream error occurred (fileWordsOnly.txt)") });
+wordsOnly.forEach((e) => fileWordsOnly.write(`${e}\n`));
+fileWordsOnly.end();
