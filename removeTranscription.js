@@ -1,7 +1,8 @@
 // READ ARRAY FROM FILE
 const {readFileSync} = require('fs');
 
-let filename = "wordsTest.txt";
+// let filename = "wordsTest.txt";
+let filename = "words.txt";
 
 let wordsOnly = [];
 let wordsTranslation =[];
