@@ -16,6 +16,7 @@ corrupt (word in English)
 run removeTranscription.js
 run getSynonyms.js
 run getDefinitions.js
+run replaceWords.js
 run collectTogether.js
 run collectTogetherPart2.js
 run createFilesAlphabetAZ.js
